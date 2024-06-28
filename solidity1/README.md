@@ -68,7 +68,7 @@ $ cast --help
 # forge script  script/Counter.s.sol --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 # cast send 0x4826533B4897376654Bb4d4AD88B7faFD0C98528 "increment()" --rpc-url http://127.0.0.1:8545  --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 # cast send 0x4826533B4897376654Bb4d4AD88B7faFD0C98528 "increment2()" --rpc-url $ETH_RPC_URL  --private-key $PRIVATE_KEY
-# cast call 0x4826533B4897376654Bb4d4AD88B7faFD0C98528 "getNumber1()" --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+# cast call 0x4826533B4897376654Bb4d4AD88B7faFD0C98528 "getNumber1()(uint256)" --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 # cast call 0x4826533B4897376654Bb4d4AD88B7faFD0C98528 "getNumber2()(uint256)" --rpc-url http://127.0.0.1:8545 
 
 # forge script script/Bank.s.sol --rpc-url local --broadcast
@@ -93,10 +93,10 @@ $ cast --help
 # cast call 0x322813Fd9A801c5507c9de605d63CEA4f2CE6c44 "getDeposit()" --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 
 
-# forge script  script/Bank.s.sol --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
-# cast send --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80  0x84eA74d481Ee0A5332c457a4d796187F6Ba67fEB --value 1ether  // 成功向合约转ETH
-# cast call --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --rpc-url http://127.0.0.1:8545   0x9E545E3C0baAB3E08CdfD552C960A1050f373042 "test()(uint)"  
-# cast call --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --rpc-url http://127.0.0.1:8545   0x84eA74d481Ee0A5332c457a4d796187F6Ba67fEB "getDepositByAddress()" 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266  
+# forge script  script/Bank.s.sol --rpc-url $ETH_RPC_URL  --private-key $PRIVATE_KEY --broadcast
+# forge script  script/BankBase.s.sol --rpc-url $ETH_RPC_URL  --private-key $PRIVATE_KEY --broadcast
+# cast send --rpc-url $ETH_RPC_URL  --private-key $PRIVATE_KEY  0x0E801D84Fa97b50751Dbf25036d067dCf18858bF --value 1ether  // 成功向合约转ETH
+# cast send --rpc-url $ETH_RPC_URL  --private-key $PRIVATE_KEY  0x0E801D84Fa97b50751Dbf25036d067dCf18858bF "withdrawAll()"  // 成功向合约转ETH
+# cast call --rpc-url $ETH_RPC_URL  --private-key $PRIVATE_KEY   0x0E801D84Fa97b50751Dbf25036d067dCf18858bF "test()(uint)"  
+# cast call --rpc-url $ETH_RPC_URL  --private-key $PRIVATE_KEY   0x0E801D84Fa97b50751Dbf25036d067dCf18858bF "getDepositByAddress()" 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266  
 
-
-# cast call 0x9E545E3C0baAB3E08CdfD552C960A1050f373042 "balance()(uint256)" --rpc-url http://127.0.0.1:8545  --legacy

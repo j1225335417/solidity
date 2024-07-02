@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.26;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
@@ -22,10 +22,14 @@ contract Bank is TokenRecipient {
     function tokensReceived(
         address sender,
         uint amount
-    ) external returns (bool) {
-        bool flag = IERC20(token).transferFrom(sender, address(this), amount);
-        require(flag, "Transfer from error");
+    ) external onlyToken returns (bool) {
         deposited[sender] += amount;
+        return true;
+    }
+
+    modifier onlyToken() {
+        require(msg.sender == token, "Not Allowed");
+        _;
     }
 
     //要先从ERC20合约授权当前合约token数量

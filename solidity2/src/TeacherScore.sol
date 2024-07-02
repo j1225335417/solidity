@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.26;
 contract Score {
     mapping(address => uint) public students;
 
@@ -7,7 +7,7 @@ contract Score {
     address owner;
     //因为 uint默认为0 用最大值作为 0 的成绩
     uint constant UNINITIALIZED = type(uint).max;
-     event Debug(address sender, address teacher);
+    event Debug(address sender, address teacher);
     constructor() {
         owner = msg.sender;
     }
@@ -22,7 +22,7 @@ contract Score {
 
     modifier onlyTeacher() {
         require(address(0) != teacher, "Set first teacher");
-          emit Debug(msg.sender, teacher); // 调试日志记录
+        emit Debug(msg.sender, teacher); // 调试日志记录
         require(msg.sender == teacher, "Disallowed opration");
         _;
     }

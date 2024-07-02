@@ -2,10 +2,10 @@
 src = "src"
 out = "out"
 libs = ["lib"]
+solc_version = "0.8.26"  # 确保版本支持 Cancun 兼容虚拟机
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
 
 remappings = [
     "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
 ]
-
